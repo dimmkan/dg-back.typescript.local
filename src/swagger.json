@@ -1,0 +1,653 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "nodejs-typescript-starter",
+    "version": "1.0.0",
+    "license": {
+      "name": "ISC"
+    },
+    "description": "Specification JSONs: [v2](/api-spec/v2), [v3](/api-spec/v3)."
+  },
+  "paths": {
+    "/api/player": {
+      "get": {
+        "summary": "/api/player",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "players": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "_id": {
+                            "type": "string"
+                          },
+                          "props": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "propName": {
+                                  "type": "string"
+                                },
+                                "propValue": {
+                                  "type": "number"
+                                },
+                                "_id": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "propName",
+                                "propValue",
+                                "_id"
+                              ]
+                            }
+                          },
+                          "resourses": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "resName": {
+                                  "type": "string"
+                                },
+                                "resValue": {
+                                  "type": "number"
+                                },
+                                "_id": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "resName",
+                                "resValue",
+                                "_id"
+                              ]
+                            }
+                          },
+                          "outPresCnt": {
+                            "type": "number"
+                          },
+                          "__v": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "_id",
+                          "props",
+                          "resourses",
+                          "outPresCnt",
+                          "__v"
+                        ]
+                      },
+                      "example": [
+                        {
+                          "_id": "61a76b9d40e0cd8d90b25b72",
+                          "props": [
+                            {
+                              "propName": "testProp",
+                              "propValue": 10,
+                              "_id": "61a76b9d40e0cd8d90b25b73"
+                            },
+                            {
+                              "propName": "testProp2",
+                              "propValue": 15,
+                              "_id": "61a76b9d40e0cd8d90b25b74"
+                            },
+                            {
+                              "propName": "testProp3",
+                              "propValue": 20,
+                              "_id": "61a76b9d40e0cd8d90b25b75"
+                            }
+                          ],
+                          "resourses": [
+                            {
+                              "resName": "money",
+                              "resValue": 655,
+                              "_id": "61a76b9d40e0cd8d90b25b76"
+                            },
+                            {
+                              "resName": "Crystals",
+                              "resValue": 800,
+                              "_id": "61a76b9d40e0cd8d90b25b77"
+                            }
+                          ],
+                          "outPresCnt": 2,
+                          "__v": 0
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    },
+    "/api/player/add": {
+      "post": {
+        "summary": "/api/player/add",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "player": {
+                      "type": "object",
+                      "properties": {
+                        "resourses": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "resName": {
+                                "type": "string"
+                              },
+                              "resValue": {
+                                "type": "number"
+                              },
+                              "_id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "resName",
+                              "resValue",
+                              "_id"
+                            ]
+                          },
+                          "example": [
+                            {
+                              "resName": "resouse 1",
+                              "resValue": 100,
+                              "_id": "61a8918058a9ef24c88eb241"
+                            }
+                          ]
+                        },
+                        "outPresCnt": {
+                          "type": "number",
+                          "example": 10
+                        },
+                        "_id": {
+                          "type": "string",
+                          "example": "61a8918058a9ef24c88eb240"
+                        },
+                        "props": {
+                          "type": "array",
+                          "items": {},
+                          "example": [
+                            null
+                          ]
+                        },
+                        "__v": {
+                          "type": "number",
+                          "example": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    },
+    "/api/player/load": {
+      "post": {
+        "summary": "/api/player/load",
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/api/player/addresourse/{id}": {
+      "put": {
+        "summary": "/api/player/addresourse/{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Done"
+                    },
+                    "player": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string",
+                          "example": "61a76b9d40e0cd8d90b25b72"
+                        },
+                        "props": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "propName": {
+                                "type": "string"
+                              },
+                              "propValue": {
+                                "type": "number"
+                              },
+                              "_id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "propName",
+                              "propValue",
+                              "_id"
+                            ]
+                          },
+                          "example": [
+                            {
+                              "propName": "testProp",
+                              "propValue": 10,
+                              "_id": "61a76b9d40e0cd8d90b25b73"
+                            }
+                          ]
+                        },
+                        "resourses": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "resName": {
+                                "type": "string"
+                              },
+                              "resValue": {
+                                "type": "number"
+                              },
+                              "_id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "resName",
+                              "resValue",
+                              "_id"
+                            ]
+                          },
+                          "example": [
+                            {
+                              "resName": "money",
+                              "resValue": 655,
+                              "_id": "61a76b9d40e0cd8d90b25b76"
+                            }
+                          ]
+                        },
+                        "outPresCnt": {
+                          "type": "number",
+                          "example": 2
+                        },
+                        "__v": {
+                          "type": "number",
+                          "example": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    },
+    "/api/player/reduceresourse/{id}": {
+      "put": {
+        "summary": "/api/player/reduceresourse/{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Done"
+                    },
+                    "player": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string",
+                          "example": "61a76b9d40e0cd8d90b25b72"
+                        },
+                        "props": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "propName": {
+                                "type": "string"
+                              },
+                              "propValue": {
+                                "type": "number"
+                              },
+                              "_id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "propName",
+                              "propValue",
+                              "_id"
+                            ]
+                          },
+                          "example": [
+                            {
+                              "propName": "testProp",
+                              "propValue": 10,
+                              "_id": "61a76b9d40e0cd8d90b25b73"
+                            }
+                          ]
+                        },
+                        "resourses": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "resName": {
+                                "type": "string"
+                              },
+                              "resValue": {
+                                "type": "number"
+                              },
+                              "_id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "resName",
+                              "resValue",
+                              "_id"
+                            ]
+                          },
+                          "example": [
+                            {
+                              "resName": "money",
+                              "resValue": 655,
+                              "_id": "61a76b9d40e0cd8d90b25b76"
+                            }
+                          ]
+                        },
+                        "outPresCnt": {
+                          "type": "number",
+                          "example": 2
+                        },
+                        "__v": {
+                          "type": "number",
+                          "example": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    },
+    "/api/player/setresourse": {
+      "put": {
+        "summary": "/api/player/setresourse",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "players": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "_id": {
+                            "type": "string"
+                          },
+                          "props": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "propName": {
+                                  "type": "string"
+                                },
+                                "propValue": {
+                                  "type": "number"
+                                },
+                                "_id": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "propName",
+                                "propValue",
+                                "_id"
+                              ]
+                            }
+                          },
+                          "resourses": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "resName": {
+                                  "type": "string"
+                                },
+                                "resValue": {
+                                  "type": "number"
+                                },
+                                "_id": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "resName",
+                                "resValue",
+                                "_id"
+                              ]
+                            }
+                          },
+                          "outPresCnt": {
+                            "type": "number"
+                          },
+                          "__v": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "_id",
+                          "props",
+                          "resourses",
+                          "outPresCnt",
+                          "__v"
+                        ]
+                      },
+                      "example": [
+                        {
+                          "_id": "61a76b9d40e0cd8d90b25b79",
+                          "props": [
+                            {
+                              "propName": "testProp1",
+                              "propValue": 10,
+                              "_id": "61a76b9d40e0cd8d90b25b7a"
+                            },
+                            {
+                              "propName": "testProp2",
+                              "propValue": 15,
+                              "_id": "61a76b9d40e0cd8d90b25b7b"
+                            },
+                            {
+                              "propName": "testProp3",
+                              "propValue": 20,
+                              "_id": "61a76b9d40e0cd8d90b25b7c"
+                            }
+                          ],
+                          "resourses": [
+                            {
+                              "resName": "money",
+                              "resValue": 322,
+                              "_id": "61a76b9d40e0cd8d90b25b7d"
+                            },
+                            {
+                              "resName": "Crystals",
+                              "resValue": 800,
+                              "_id": "61a76b9d40e0cd8d90b25b7e"
+                            }
+                          ],
+                          "outPresCnt": 0,
+                          "__v": 0
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    },
+    "/api/player/givepresent/{id}": {
+      "put": {
+        "summary": "/api/player/givepresent/{id}",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "_id": {
+                        "type": "string"
+                      },
+                      "props": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "propName": {
+                              "type": "string"
+                            },
+                            "propValue": {
+                              "type": "number"
+                            },
+                            "_id": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "propName",
+                            "propValue",
+                            "_id"
+                          ]
+                        }
+                      },
+                      "resourses": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "resName": {
+                              "type": "string"
+                            },
+                            "resValue": {
+                              "type": "number"
+                            },
+                            "_id": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "resName",
+                            "resValue",
+                            "_id"
+                          ]
+                        }
+                      },
+                      "outPresCnt": {
+                        "type": "number"
+                      },
+                      "__v": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "_id",
+                      "props",
+                      "resourses",
+                      "outPresCnt",
+                      "__v"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    }
+  },
+  "tags": []
+}
