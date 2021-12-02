@@ -2,6 +2,7 @@ import http from 'http';
 import Express, { Application, Request, Response } from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+const cors = require('cors')
 
 // Router
 import mainRouter from './router/main';
@@ -10,6 +11,8 @@ import mongoose from 'mongoose';
 const app: Application = Express();
 
 app.use(Express.json());
+app.use(cors())
+app.options('*', cors)
 app.use(Express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());

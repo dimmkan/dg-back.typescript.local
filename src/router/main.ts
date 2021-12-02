@@ -7,7 +7,7 @@ const router = Express.Router();
 router.get('/', async (req: Request, res: Response) => {
     try {
         const players = await Player.find()
-        res.status(200).json({players})
+        res.status(200).json(players)
     } catch (e) {
         console.log(e)
         res.status(500).json({message: 'Internal server error'})
@@ -23,7 +23,7 @@ router.post('/add', async (req: Request, res: Response) => {
             outPresCnt: 10
         })
         await player.save()
-        res.status(201).json({player})
+        res.status(201).json(player)
     } catch (e) {
         console.log(e)
         res.status(500).json({message: 'Internal server error'})
@@ -130,7 +130,7 @@ router.put('/setresourse', async (req: Request, res: Response) => {
                 await player.save()
             }
         }
-        res.status(200).json({players})
+        res.status(200).json(players)
     } catch (e) {
         console.log(e)
         res.status(500).json({message: 'Internal server error'})
