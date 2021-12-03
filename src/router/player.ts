@@ -1,5 +1,6 @@
 import Express, {Request, Response} from 'express';
 import Player from "../model/player";
+import Present from "../model/present";
 
 const router = Express.Router();
 
@@ -160,6 +161,16 @@ router.put('/givepresent/:id', async (req: Request, res: Response) => {
                     // @ts-ignore
                     resourse.resValue += +req.body.count;
                     await player.save()
+
+                    const present = new Present({
+                        // @ts-ignore
+                        sender: who._id,
+                        recipient: player._id,
+                        resourse: resourse.resName,
+                        resVal: +req.body.count
+                    })
+
+                    await present.save()
                 }
                 // @ts-ignore
                 who.outPresCnt--
@@ -176,5 +187,6 @@ router.put('/givepresent/:id', async (req: Request, res: Response) => {
         res.status(500).json({message: 'Internal server error'})
     }
 })
+
 
 export default router;

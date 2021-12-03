@@ -1,12 +1,14 @@
 import http from 'http';
-import Express, { Application, Request, Response } from 'express';
+import Express, { Application} from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-const cors = require('cors')
-
-// Router
-import mainRouter from './router/main';
+const cors = require('cors');
 import mongoose from 'mongoose';
+
+// Routers
+import playerRouter from './router/player';
+import presentRouter from './router/present'
+
 
 const app: Application = Express();
 
@@ -20,7 +22,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use('/api/player', mainRouter);
+app.use('/api/player', playerRouter);
+app.use('/api/present', presentRouter);
 
 async function start(){
     const url = 'mongodb://localhost:27017/dg_test'
